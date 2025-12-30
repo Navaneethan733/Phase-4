@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+       <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STACKLY Biotech - Advancing Healthcare</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --primary: #1a5276;
+            --secondary: #3498db;
+            --accent: #2ecc71;
+            --dark: #1a1a1a;
+            --darker: #0d0d0d;
+            --light: #f8f8f8;
+            --cream: #f9f5f0;
+            --transition: all 0.4s ease;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 20px auto 0;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        /* Header Styles */
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: #fff;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Top bar */
+        .top-bar {
+            background-color: #e8f4fc;
+            padding: 8px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #1a5276;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: #fff;
+            position: relative;
+        }
+
+        /* Logo styles */
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Nav links */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            transition: 0.3s ease;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1rem;
+            position: relative;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0%;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+            padding: 10px 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: rgba(26, 82, 118, 0.1);
+            color: var(--primary);
+            padding-left: 25px;
+        }
+
+        .dropdown i {
+            margin-left: 5px;
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .dropdown:hover i {
+            transform: rotate(180deg);
+        }
+
+        /* Icons */
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-icons a {
+            position: relative;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .nav-icons i {
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-icons i:hover {
+            color: var(--primary);
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            color: #333;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .research-hero {
+            background: linear-gradient(rgba(26, 82, 118, 0.8), rgba(26, 82, 118, 0.9)), 
+                        url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            color: white;
+            text-align: center;
+        }
+
+        .research-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            
+        }
+
+        .research-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-family: 'Raleway', sans-serif;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--accent);
+            color: white;
+            border: 2px solid var(--accent);
+            border-radius: 2px;
+            font-weight: 500;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--accent);
+        }
+
+        /* Research Focus Areas */
+        .research-focus {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .focus-card {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .focus-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .focus-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .focus-card:hover .focus-img {
+            transform: scale(1.05);
+        }
+
+        .focus-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .focus-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 400;
+        }
+
+        .focus-content p {
+            color: #666;
+            margin-bottom: 20px;
+            font-family: 'Raleway', sans-serif;
+            flex-grow: 1;
+        }
+
+        .focus-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .focus-tag {
+            background-color: rgba(26, 82, 118, 0.1);
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .focus-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'Raleway', sans-serif;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .focus-link i {
+            margin-left: 8px;
+            transition: var(--transition);
+        }
+
+        .focus-link:hover {
+            color: var(--secondary);
+        }
+
+        .focus-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Research Stats */
+        .research-stats {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        /* Publications */
+        .publications {
+            padding: 100px 0;
+            background-color: var(--cream);
+        }
+
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .publication-card {
+            background-color: white;
+            border-radius: 5px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .publication-journal {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .publication-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .publication-authors {
+            color: #666;
+            margin-bottom: 15px;
+            font-family: 'Raleway', sans-serif;
+            font-style: italic;
+        }
+
+        .publication-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'Raleway', sans-serif;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .publication-link i {
+            margin-left: 8px;
+            transition: var(--transition);
+        }
+
+        .publication-link:hover {
+            color: var(--secondary);
+        }
+
+        .publication-link:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Research Team */
+        .research-team {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .team-info {
+            padding: 25px 20px;
+        }
+
+        .team-name {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .team-role {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .team-bio {
+            color: #666;
+            font-family: 'Raleway', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        /* Collaboration Section */
+        .collaboration {
+            padding: 100px 0;
+            background-color: var(--cream);
+        }
+
+        .collaboration-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .collaboration-text {
+            flex: 1;
+        }
+
+        .collaboration-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-weight: 400;
+        }
+
+        .collaboration-text p {
+            margin-bottom: 20px;
+            color: #666;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .collaboration-partners {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .partner-logo {
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 120px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .partner-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 80px;
+            filter: grayscale(100%);
+            transition: var(--transition);
+        }
+
+        .partner-logo:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 60px 5% 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons i {
+            font-size: 1.2rem;
+            color: #ccc;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .social-icons i:hover {
+            color: var(--secondary);
+        }
+
+        .newsletter input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .subscribe {    
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--secondary);
+            color: white;
+            border: 2px solid var(--secondary);
+            border-radius: 5px;
+            font-weight: 500;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Raleway', sans-serif;
+            width: 100%;
+            text-align: center;
+        }
+
+        .subscribe:hover {
+            background-color: transparent;
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        /* ========== MEDIA QUERIES ========== */
+        /* Large screens (1100px and below) */
+        @media screen and (max-width: 1100px) {
+            .collaboration-content {
+                flex-direction: column;
+            }
+            
+            .collaboration-partners {
+                margin-top: 40px;
+            }
+        }
+
+        /* Tablets (768px and below) */
+        @media screen and (max-width: 768px) {
+            section {
+                padding: 80px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .research-hero {
+                height: 50vh;
+                padding-top: 70px;
+            }
+            
+            .research-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .research-hero p {
+                font-size: 1.1rem;
+            }
+            
+            /* Navigation */
+            @media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+
+        /* ADD THESE LINES ⇩ */
+        align-items: center;        /* Centers horizontally */
+        justify-content: center;    /* Centers vertically (if needed) */
+        text-align: center;         /* Ensure text is centered */
+    }
+}
+
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            /* Dropdown adjustments for mobile */
+            .dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: transparent;
+                padding-left: 20px;
+                display: none;
+            }
+
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .dropdown-content a {
+                padding: 8px 0;
+                border-bottom: none;
+                font-size: 1rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .logo-img {
+                height: 35px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .collaboration-partners {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Mobile devices (576px and below) */
+        @media screen and (max-width: 576px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .research-hero {
+                padding: 90px 0 40px;
+                height: auto;
+                min-height: 50vh;
+            }
+            
+            .research-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .research-hero p {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+            }
+            
+            .focus-card, .publication-card, .team-card {
+                padding: 20px;
+            }
+            
+            .focus-content, .team-info {
+                padding: 20px;
+            }
+            
+            .nav-links {
+                padding: 60px 20px 20px;
+            }
+            
+            /* Smaller logo for very small screens */
+            .logo-img {
+                height: 30px;
+            }
+            
+            .logo-text {
+                font-size: 1.3rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .collaboration-text h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Extra small devices (400px and below) */
+        @media screen and (max-width: 400px) {
+            .research-hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .focus-grid, .publications-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-button {
+                padding: 12px 24px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            Advancing healthcare through innovative biotechnology | ISO 9001:2015 Certified
+        </div>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <img src="./image/logo-stackly.webp" alt="STACKLY Biotech Logo" class="logo-img">
+                <span class="logo-text">STACKLY Biotech</span>
+            </a>
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="index.html">Home <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="index.html">Home Page 1</a>
+                        <a href="./404.html">Home Page 2</a>
+                    </div>
+                </li>
+                <li><a href="research.html" class="active">Research</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="login.html"><i class="fas fa-user"></i></a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Research Hero Section -->
+    <section class="research-hero">
+        <div class="container">
+            <div class="research-hero-content">
+                <p>Pushing the boundaries of biotechnology to develop groundbreaking solutions for global health challenges.</p>
+                <a href="./404.html" class="cta-button">Explore Our Research</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Focus Areas -->
+    <section class="research-focus" id="focus-areas">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research Focus Areas</h2>
+                <p>Our multidisciplinary approach spans cutting-edge biotechnology domains</p>
+            </div>
+            <div class="focus-grid">
+                <div class="focus-card" id="genomics">
+                    <img src="./image/stem-cells.webp" alt="Genomic Medicine" class="focus-img">
+                    <div class="focus-content">
+                        <h3>Genomic Medicine</h3>
+                        <p>Leveraging genomic data to develop personalized treatments and diagnostics for complex diseases.</p>
+                        <div class="focus-tags">
+                            <span class="focus-tag">CRISPR</span>
+                            <span class="focus-tag">Gene Editing</span>
+                            <span class="focus-tag">Personalized Therapy</span>
+                        </div>
+                        <a href="./404.html" class="focus-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="focus-card" id="immunotherapy">
+                    <img src="./image/reserch.webp" alt="Immunotherapy" class="focus-img">
+                    <div class="focus-content">
+                        <h3>Immunotherapy</h3>
+                        <p>Developing novel immunotherapies that harness the body's immune system to fight cancer and autoimmune diseases.</p>
+                        <div class="focus-tags">
+                            <span class="focus-tag">CAR-T</span>
+                            <span class="focus-tag">Checkpoint Inhibitors</span>
+                            <span class="focus-tag">Cancer Vaccines</span>
+                        </div>
+                        <a href="./404.html" class="focus-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="focus-card" id="stemcell">
+                    <img src="./image/brainstand.webp" alt="Stem Cell Research" class="focus-img">
+                    <div class="focus-content">
+                        <h3>Stem Cell Research</h3>
+                        <p>Exploring the therapeutic potential of stem cells for regenerative medicine and disease modeling.</p>
+                        <div class="focus-tags">
+                            <span class="focus-tag">iPSCs</span>
+                            <span class="focus-tag">Tissue Engineering</span>
+                            <span class="focus-tag">Organoids</span>
+                        </div>
+                        <a href="./404.html" class="focus-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="focus-card" id="precision">
+                    <img src="./image/brain.webp" alt="Precision Medicine" class="focus-img">
+                    <div class="focus-content">
+                        <h3>Precision Medicine</h3>
+                        <p>Developing targeted therapies based on individual genetic, environmental, and lifestyle factors.</p>
+                        <div class="focus-tags">
+                            <span class="focus-tag">Biomarkers</span>
+                            <span class="focus-tag">Pharmacogenomics</span>
+                            <span class="focus-tag">Diagnostics</span>
+                        </div>
+                        <a href="./404.html" class="focus-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Stats -->
+    <section class="research-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Research Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">120+</div>
+                    <div class="stat-label">Peer-Reviewed Publications</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Patents Filed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Research Collaborations</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications -->
+    <section class="publications">
+        <div class="container">
+            <div class="section-title">
+                <h2>Recent Publications</h2>
+                <p>Our latest research findings in leading scientific journals</p>
+            </div>
+            <div class="publications-grid">
+                <div class="publication-card">
+                    <div class="publication-journal">Nature Biotechnology</div>
+                    <h3 class="publication-title">CRISPR-based screening identifies new therapeutic targets for pancreatic cancer</h3>
+                    <p class="publication-authors">Chen, L., Rodriguez, M., Johnson, K. et al.</p>
+                    <a href="./404.html" class="publication-link">Read Publication <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="publication-card">
+                    <div class="publication-journal">Cell</div>
+                    <h3 class="publication-title">Novel CAR-T design enhances persistence and efficacy in solid tumors</h3>
+                    <p class="publication-authors">Williams, S., Patel, R., Zhang, Y. et al.</p>
+                    <a href="./404.html" class="publication-link">Read Publication <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="publication-card">
+                    <div class="publication-journal">Science Translational Medicine</div>
+                    <h3 class="publication-title">Stem cell-derived organoids model rare genetic disorders for drug screening</h3>
+                    <p class="publication-authors">Thompson, A., Lee, J., Martinez, P. et al.</p>
+                    <a href="./404.html" class="publication-link">Read Publication <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Team -->
+    <section class="research-team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Research Leadership</h2>
+                <p>Meet our team of world-class scientists and researchers</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="./image/Doc1.webp" alt="Dr. Sarah Johnson" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Dr. Sarah Johnson</h3>
+                        <p class="team-role">Chief Scientific Officer</p>
+                        <p class="team-bio">Leading our genomic medicine research with 15+ years of experience in molecular biology.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="./image/Doc2.webp" alt="Dr. Michael Chen" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Dr. Michael Chen</h3>
+                        <p class="team-role">Director of Immunotherapy</p>
+                        <p class="team-bio">Pioneering novel cancer immunotherapies with expertise in T-cell engineering.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="./image/Doc3.webp" alt="Dr. Priya Sharma" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Dr. Priya Sharma</h3>
+                        <p class="team-role">Head of Stem Cell Research</p>
+                        <p class="team-bio">Expert in regenerative medicine and stem cell differentiation protocols.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="./image/Doc4.webp" alt="Dr. Robert Kim" class="team-img">
+                    <div class="team-info">
+                        <h3 class="team-name">Dr. Robert Kim</h3>
+                        <p class="team-role">Director of Bioinformatics</p>
+                        <p class="team-bio">Developing computational tools for analyzing complex biological datasets.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaboration Section -->
+    <section class="collaboration">
+        <div class="container">
+            <div class="collaboration-content">
+                <div class="collaboration-text">
+                    <h2>Research Collaborations</h2>
+                    <p>We believe that groundbreaking discoveries happen at the intersection of disciplines. That's why we actively collaborate with leading academic institutions, research hospitals, and industry partners worldwide.</p>
+                    <p>Our collaborative projects span from basic research to clinical applications, ensuring that our innovations translate into real-world solutions for patients.</p>
+                    <a href="contact.html" class="cta-button">Partner With Us</a>
+                </div>
+                <div class="collaboration-partners">
+                    <div class="partner-logo">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTAwIj48cmVjdCB4PSIyMCIgeT0iMjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iNjAiIGZpbGw9IiMxYTUyNzYiIG9wYWNpdHk9IjAuMSIvPjx0ZXh0IHg9IjEwMCIgeT0iNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzFhNTI3NiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TkFUSU9OQUwgSU5TVElUVVRFPC90ZXh0Pjwvc3ZnPg==" alt="National Institute of Health">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTAwIj48cmVjdCB4PSIyMCIgeT0iMjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iNjAiIGZpbGw9IiMxYTUyNzYiIG9wYWNpdHk9IjAuMSIvPjx0ZXh0IHg9IjEwMCIgeT0iNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzFhNTI3NiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VU5JVkVSU0lUWTwvdGV4dD48L3N2Zz4=" alt="University Research">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTAwIj48cmVjdCB4PSIyMCIgeT0iMjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iNjAiIGZpbGw9IiMxYTUyNzYiIG9wYWNpdHk9IjAuMSIvPjx0ZXh0IHg9IjEwMCIgeT0iNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzFhNTI3NiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+SE9TUElUQUw8L3RleHQ+PC9zdmc+" alt="Medical Center">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTAwIj48cmVjdCB4PSIyMCIgeT0iMjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iNjAiIGZpbGw9IiMxYTUyNzYiIG9wYWNpdHk9IjAuMSIvPjx0ZXh0IHg9IjEwMCIgeT0iNjAiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzFhNTI3NiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QklPVEVDSCBQQVJUTkVSPC90ZXh0Pjwvc3ZnPg==" alt="Biotech Partner">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>STACKLY Biotech</h3>
+                <p>Advancing healthcare through innovative biotechnology solutions since 2010.</p>
+                <div class="social-icons">
+                    <a href="./404.html"><i class="fab fa-facebook-f"></i></a>
+                    <a href="./404.html"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="./404.html"><i class="fab fa-twitter"></i></a>
+                    <a href="./404.html"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Salem, Tamilnadu, India</li>
+                    <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                    <li><i class="fas fa-envelope"></i> info@stacklybiotech.com</li>
+                    <li><i class="fas fa-clock"></i> Mon-Fri: 8AM-6PM IST</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive updates on our latest research and product developments.</p>
+                <div class="newsletter">
+                    <input type="email" placeholder="Your email address">
+                    <button class="subscribe">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 STACKLY Biotech. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+            
+            // Toggle between hamburger and close icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Mobile dropdown toggle for both Home and Research
+        document.querySelectorAll('.dropdown > a').forEach(dropdownToggle => {
+            dropdownToggle.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const dropdown = this.parentElement;
+                    dropdown.classList.toggle('active');
+                }
+            });
+        });
+
+        // Close mobile menu when clicking on a link (non-dropdown)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                // Only close the menu if it's not a dropdown toggle
+                if (!this.parentElement.classList.contains('dropdown')) {
+                    document.querySelector('.nav-links').classList.remove('active');
+                    
+                    // Reset menu icon to hamburger
+                    const menuToggle = document.querySelector('.menu-toggle i');
+                    menuToggle.classList.remove('fa-times');
+                    menuToggle.classList.add('fa-bars');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
